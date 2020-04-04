@@ -1,0 +1,34 @@
+﻿@page "/"
+@using JWT.Models
+
+<div class="main">
+
+    <Warning Message="JWTs are credentials. Be careful how do you manage them! We don't send any token. All validations are done client side." />
+
+    <div class="row">
+        <div class="col-sm">
+            <InputPrompt 
+                Title="Encoded" 
+                Subtitle="(paste your encoded token here)"
+                OnInputChange="DecodeToken"/>
+        </div>
+        <div class="col-sm">
+            <CascadingValue Value="@_token">
+                <OutputPrompt Title="Decoded"
+                          Subtitle="(here is the decoded token info)" />
+            </CascadingValue>
+        </div>
+    </div>
+</div>
+
+
+@code {
+    private Token _token;
+
+    private void DecodeToken(string token)
+    {
+        Console.WriteLine(token);
+        _token = new Token(token);
+        StateHasChanged();
+    }
+}

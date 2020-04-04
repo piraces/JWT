@@ -1,0 +1,21 @@
+﻿<div class="alert alert-secondary mt-4" role="alert">
+    <strong>@Title</strong>&nbsp;@Subtitle
+</div>
+<div class="mb-1">
+    <textarea class="form-control" id="tokenTextArea" rows="20" @bind="Token" @bind:event="oninput" @onkeyup="HandleToken"></textarea>
+</div>
+
+@code {
+    [Parameter]
+    public string Title { get; set; }
+    [Parameter]
+    public string Subtitle { get; set; }
+    [Parameter] public Action<string> OnInputChange { get; set; }
+
+    private string Token { get; set; }
+
+    private void HandleToken()
+    {
+        OnInputChange?.Invoke(Token);
+    }
+}
