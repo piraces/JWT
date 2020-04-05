@@ -4,9 +4,9 @@
     <strong>@Title</strong>&nbsp;@Subtitle
 </div>
 <div class="mb-1">
-    <textarea class="form-control" id="tokenTextArea" rows="5">@Token?.Header</textarea>
-    <textarea class="form-control" rows="10">@Token?.Payload</textarea>
-    <textarea class="form-control" rows="4">@Token?.Signature</textarea>
+    <textarea class="form-control token-output token-output-header" id="tokenTextArea" rows="5" disabled="">@Token?.Header</textarea>
+    <textarea class="form-control token-output token-output-payload" rows="10" disabled>@Token?.Payload</textarea>
+    <textarea class="form-control token-output token-output-signature" rows="4" disabled>@Token?.Signature</textarea>
 </div>
 
 @code {

@@ -1,3 +1,19 @@
 ﻿.main {
     padding: 3rem 1.5rem;
 }
+
+.token-output {
+    font-weight: 600;
+}
+
+.token-output-header {
+    color: #fb015b;
+}
+
+.token-output-payload {
+    color: #d63aff;
+}
+
+.token-output-signature {
+    color: #00b9f1;
+}

@@ -1,7 +1,5 @@
-using System;
-using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Threading.Tasks;
-using System.Text;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using Microsoft.Extensions.DependencyInjection;
 
@@ -11,6 +9,10 @@ namespace JWT
     {
         public static async Task Main(string[] args)
         {
+            // Temp fix for linker: https://github.com/mono/linker/issues/870
+            _ = new JwtHeader();
+            _ = new JwtPayload();
+
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("app");
 
