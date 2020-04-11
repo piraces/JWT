@@ -10,7 +10,8 @@
     public string Title { get; set; }
     [Parameter]
     public string Subtitle { get; set; }
-    [Parameter] public Action<string> OnInputChange { get; set; }
+    [Parameter] 
+    public Action<string> OnInputChange { get; set; }
 
     private string Token { get; set; }
 

@@ -10,11 +10,10 @@
 </div>
 
 @code {
-    [CascadingParameter]
-    protected Token Token { get; set; }
-
     [Parameter]
     public string Title { get; set; }
     [Parameter]
     public string Subtitle { get; set; }
+    [Parameter]
+    public Token Token { get; set; }
 }

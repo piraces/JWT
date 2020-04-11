@@ -13,10 +13,10 @@
                 OnInputChange="DecodeToken"/>
         </div>
         <div class="col-sm">
-            <CascadingValue Value="@_token">
-                <OutputPrompt Title="Decoded"
-                          Subtitle="(here is the decoded token info)" />
-            </CascadingValue>
+            <OutputPrompt
+                Title="Decoded"
+                Subtitle="(here is the decoded token info)"
+                Token="_token" />
         </div>
     </div>
 </div>
