@@ -30,10 +30,22 @@ namespace JWT.Models
                 var token = jwtHandler.ReadJwtToken(jwtInput);
 
                 var headers = token.Header;
-                Header = headers.Select(c => new JWTKeyValuePair {Key = c.Key, KeyInfo = "", Value = c.Value.ToString()}).ToList();
+                Header = headers.Select(c => 
+                    new JWTKeyValuePair
+                    {
+                        Key = c.Key,
+                        KeyInfo = KeyInfo.KeyInfoHeader.TryGetValue(c.Key, out var keyInfo) ?  keyInfo : "",
+                        Value = c.Value.ToString()
+                    }).ToList();
 
                 var claims = token.Claims;
-                Payload = claims.Select(c => new JWTKeyValuePair {Key = c.Type, KeyInfo = "", Value = c.Value}).ToList();
+                Payload = claims.Select(c => 
+                    new JWTKeyValuePair
+                    {
+                        Key = c.Type,
+                        KeyInfo = KeyInfo.KeyInfoPayload.TryGetValue(c.Type, out var keyInfo) ?  keyInfo : "",
+                        Value = c.Value
+                    }).ToList();
 
                 Signature = token.RawSignature;
             }
