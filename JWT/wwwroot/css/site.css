@@ -2,7 +2,12 @@
     padding: 3rem 1.5rem;
 }
 
+.hidden-output {
+    display: none;
+}
+
 .token-output {
+    height: auto;
     font-weight: 600;
 }
 

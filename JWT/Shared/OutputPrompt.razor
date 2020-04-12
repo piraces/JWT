@@ -3,10 +3,10 @@
 <div class="alert alert-secondary mt-4" role="alert">
     <strong>@Title</strong>&nbsp;@Subtitle
 </div>
-<div class="mb-1">
-    <textarea class="form-control token-output token-output-header" id="tokenTextArea" rows="5" disabled="">@Token?.Header</textarea>
-    <textarea class="form-control token-output token-output-payload" rows="10" disabled>@Token?.Payload</textarea>
-    <textarea class="form-control token-output token-output-signature" rows="4" disabled>@Token?.Signature</textarea>
+<div class="@OutputCssClass()">
+    <pre class="form-control token-output token-output-header" id="tokenTextArea" rows="5" disabled="">@Token?.Header</pre>
+    <pre class="form-control token-output token-output-payload" rows="10" disabled>@Token?.Payload</pre>
+    <pre class="form-control token-output token-output-signature" rows="4" disabled>@Token?.Signature</pre>
 </div>
 
 @code {
@@ -16,4 +16,17 @@
     public string Subtitle { get; set; }
     [Parameter]
     public Token Token { get; set; }
+
+
+    string OutputCssClass()
+    {
+        var cssClass = new List<string> { "mb-1" };
+
+        if (Token == null || string.IsNullOrEmpty(Token.Header) || string.IsNullOrEmpty(Token.Payload))
+        {
+            cssClass.Add("hidden-output");
+        }
+
+        return string.Join(' ', cssClass);
+    }
 }

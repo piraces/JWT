@@ -1,10 +1,9 @@
-﻿@using System.Dynamic
-@using System.IdentityModel.Tokens.Jwt
+﻿@using System.IdentityModel.Tokens.Jwt
 <div class="alert alert-secondary mt-4" role="alert">
     <strong>@Title</strong>&nbsp;@Subtitle
 </div>
 <div class="mb-1">
-    <textarea class="@CssClass()" id="tokenTextArea" rows="20" @bind="Token" @bind:event="oninput" @onkeyup="HandleToken"></textarea>
+    <textarea class="@InputCssClass()" id="tokenTextArea" rows="20" @bind="Token" @bind:event="oninput" @onkeyup="HandleToken"></textarea>
     <div class="invalid-feedback">
         The token provided is invalid...
     </div>
@@ -24,7 +23,7 @@
     private string Token { get; set; }
     private bool? ValidToken { get; set; }
 
-    string CssClass() {
+    string InputCssClass() {
         var cssClass = new List<string>{ "form-control" };
         if (!ValidToken.HasValue)
         {
@@ -45,10 +44,6 @@
     {
         var jwtHandler = new JwtSecurityTokenHandler();
         ValidToken = jwtHandler.CanReadToken(Token);
-        if (ValidToken.Value)
-        {
-            OnInputChange?.Invoke(Token);
-        }
-
+        OnInputChange?.Invoke(Token);
     }
 }
