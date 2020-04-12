@@ -4,9 +4,36 @@
     <strong>@Title</strong>&nbsp;@Subtitle
 </div>
 <div class="@OutputCssClass()">
-    <pre class="form-control token-output token-output-header" id="tokenTextArea" rows="5" disabled="">@Token?.Header</pre>
-    <pre class="form-control token-output token-output-payload" rows="10" disabled>@Token?.Payload</pre>
-    <pre class="form-control token-output token-output-signature" rows="4" disabled>@Token?.Signature</pre>
+    <p class="output-title">
+        HEADER:
+        <span class="output-subtitle">ALGORITHM &amp; TOKEN TYPE</span>
+    </p>
+    @if (Token?.Header != null && Token.Header.Count > 0)
+    {
+        <pre class="form-control token-output token-output-header">{
+        @foreach (var item in Token.Header)
+        {
+        <span title="@item?.KeyInfo">"@item?.Key": "@item?.Value"</span>
+        }}</pre>
+    }
+
+    <p class="output-title">
+        PAYLOAD:
+        <span class="output-subtitle">DATA</span>
+    </p>
+    @if (Token?.Payload != null && Token.Payload.Count > 0)
+    {
+        <pre class="form-control token-output token-output-payload">{
+        @foreach (var item in Token.Payload)
+        {
+        <span title="@item?.KeyInfo">"@item?.Key": "@item?.Value"</span>
+        }}</pre>
+    }
+
+    <p class="output-title">
+        SIGNATURE:
+    </p>
+    <pre class="form-control token-output token-output-signature">@Token?.Signature</pre>
 </div>
 
 @code {
@@ -22,7 +49,7 @@
     {
         var cssClass = new List<string> { "mb-1" };
 
-        if (Token == null || string.IsNullOrEmpty(Token.Header) || string.IsNullOrEmpty(Token.Payload))
+        if (Token?.Header == null || Token.Payload == null)
         {
             cssClass.Add("hidden-output");
         }

@@ -1,7 +1,6 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
+﻿using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
+using System.Linq;
 
 namespace JWT.Models
 {
@@ -9,8 +8,8 @@ namespace JWT.Models
     {
         private readonly string _rawToken;
 
-        public string Header { get; set; }
-        public string Payload { get; set; }
+        public List<JWTKeyValuePair> Header { get; set; }
+        public List<JWTKeyValuePair> Payload { get; set; }
         public string Signature { get; set; }
 
         public Token(string rawToken)
@@ -29,28 +28,15 @@ namespace JWT.Models
             if(readableToken)
             {
                 var token = jwtHandler.ReadJwtToken(jwtInput);
-    
-                //Extract the headers of the JWT
+
                 var headers = token.Header;
-                var jwtHeader = "{";
-                foreach(var h in headers)
-                {
-                    jwtHeader += '"' + h.Key + "\":\"" + h.Value + "\",";
-                }
-                jwtHeader += "}";
-                Header = "Header:\r\n" + JToken.Parse(jwtHeader).ToString(Formatting.Indented);
+                Header = headers.Select(c => new JWTKeyValuePair {Key = c.Key, KeyInfo = "", Value = c.Value.ToString()}).ToList();
 
                 var claims = token.Claims;
-                var jwtPayload = "{";
-                foreach(Claim c in claims)
-                {
-                    jwtPayload += '"' + c.Type + "\":\"" + c.Value + "\",";
-                }
-                jwtPayload += "}";
-                Payload = "\r\nPayload:\r\n" + JToken.Parse(jwtPayload).ToString(Formatting.Indented);
+                Payload = claims.Select(c => new JWTKeyValuePair {Key = c.Type, KeyInfo = "", Value = c.Value}).ToList();
 
-                Signature = "\r\nSignature:\r\n" + token.RawSignature;
-            }   
+                Signature = token.RawSignature;
+            }
         }
     }
 }
