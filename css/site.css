@@ -1,0 +1,41 @@
+﻿.main {
+    padding: 3rem 1.5rem;
+}
+
+.hidden-output {
+    display: none;
+}
+
+.token-output {
+    height: auto;
+    font-weight: 600;
+}
+
+.output-title {
+    margin: 0;
+    font-size: 12px;
+    color: #000;
+    zoom: 1;
+    border-top: 1px solid rgba(155,155,155,0.5);
+    border-left: 1px solid rgba(155,155,155,0.5);
+    border-right: 1px solid rgba(155,155,155,0.5);
+    line-height: 2.5;
+    padding: 0 10px;
+}
+
+.output-subtitle {
+    color: #979797;
+    margin-left: 5px;
+}
+
+.token-output-header {
+    color: #fb015b;
+}
+
+.token-output-payload {
+    color: #d63aff;
+}
+
+.token-output-signature {
+    color: #00b9f1;
+}
