@@ -1,8 +1,8 @@
 ﻿@page "/"
 @using JWT.Models
+@using JWT.Shared
 
 <div class="main">
-
     <Warning Message="JWTs are credentials. Be careful how do you manage them! We don't send any token. All validations are done client side." />
 
     <div class="row">
@@ -23,7 +23,7 @@
 
 
 @code {
-    private Token _token;
+    private Token? _token;
 
     private void DecodeToken(string token)
     {

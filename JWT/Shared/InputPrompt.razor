@@ -14,13 +14,13 @@
 
 @code {
     [Parameter]
-    public string Title { get; set; }
+    public string? Title { get; set; }
     [Parameter]
-    public string Subtitle { get; set; }
+    public string? Subtitle { get; set; }
     [Parameter]
-    public Action<string> OnInputChange { get; set; }
+    public Action<string>? OnInputChange { get; set; }
 
-    private string Token { get; set; }
+    private string? Token { get; set; }
     private bool? ValidToken { get; set; }
 
     string InputCssClass() {
@@ -44,6 +44,9 @@
     {
         var jwtHandler = new JwtSecurityTokenHandler();
         ValidToken = jwtHandler.CanReadToken(Token);
-        OnInputChange?.Invoke(Token);
+        if (Token is not null)
+        {
+            OnInputChange?.Invoke(Token);
+        }
     }
 }

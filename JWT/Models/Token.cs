@@ -6,13 +6,13 @@ namespace JWT.Models
 {
     public class Token
     {
-        private readonly string _rawToken;
+        private readonly string? _rawToken;
 
-        public List<JWTKeyValuePair> Header { get; set; }
-        public List<JWTKeyValuePair> Payload { get; set; }
-        public string Signature { get; set; }
+        public List<JWTKeyValuePair>? Header { get; set; }
+        public List<JWTKeyValuePair>? Payload { get; set; }
+        public string? Signature { get; set; }
 
-        public Token(string rawToken)
+        public Token(string? rawToken)
         {
             _rawToken = rawToken;
             DecodeAndSetVariables();
