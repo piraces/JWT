@@ -1,0 +1,81 @@
+﻿@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--bs-dark);
+        color: var(--bs-light);
+    }
+    textarea.form-control {
+        background-color: var(--bs-dark);
+        color: var(--bs-light);
+    }
+
+    textarea.form-control:active {
+        background-color: var(--bs-dark);
+        color: var(--bs-light);
+    }
+
+    textarea.form-control:focus {
+        background-color: var(--bs-dark);
+        color: var(--bs-light);
+    }
+
+    p.output-title {
+        color: #fff;
+        border-top: 1px solid #fff;
+        border-left: 1px solid #fff;
+        border-right: 1px solid #fff;
+    }
+
+    p.output-subtitle {
+        color: #c9c9c9;
+    }
+
+    pre.form-control.token-output {
+        background-color: var(--bs-dark);
+    }
+}
+
+.main {
+    padding: 3rem 1.5rem;
+}
+
+.hidden-output {
+    display: none;
+}
+
+.token-output {
+    height: auto;
+    font-weight: 600;
+}
+
+.output-title {
+    margin: 0;
+    font-size: 12px;
+    color: #000;
+    zoom: 1;
+    border-top: 1px solid rgba(155,155,155,0.5);
+    border-left: 1px solid rgba(155,155,155,0.5);
+    border-right: 1px solid rgba(155,155,155,0.5);
+    line-height: 2.5;
+    padding: 0 10px;
+}
+
+.output-subtitle {
+    color: #979797;
+    margin-left: 5px;
+}
+
+.token-output > span {
+    display: block;
+}
+
+.token-output-header {
+    color: #fb015b;
+}
+
+.token-output-payload {
+    color: #d63aff;
+}
+
+.token-output-signature {
+    color: #00b9f1;
+}
