@@ -1,8 +1,8 @@
 # JWT
 
-![Publish to GitHub Pages](https://github.com/piraces/JWT/workflows/Publish%20to%20GitHub%20Pages/badge.svg?branch=master)
+[![Publish to GitHub Pages](https://github.com/piraces/JWT/actions/workflows/main.yml/badge.svg)](https://github.com/piraces/JWT/actions/workflows/main.yml)
 
-A Progressive Web App (PWA) made with blazor that can decode and show all values encoded in a JSON Web Token
+A Progressive Web App (PWA) made with Blazor (WebAssembly) that can decode and show all values encoded in a JSON Web Token
 
 
 ## Try it!
